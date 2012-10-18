@@ -13,10 +13,10 @@ config = config.rec()
 
 class ReplyAddHandler(BaseHandler):
     def post(self, pid):
-        name = self.get_argument("reply[name]")
-        email = self.get_argument("reply[email]")
-        website = self.get_argument("reply[website]")
-        origin_content = self.get_argument("reply[content]")
+        name = self.get_argument("reply[name]", default='')
+        email = self.get_argument("reply[email]", default='')
+        website = self.get_argument("reply[website]", default='')
+        origin_content = self.get_argument("reply[content]", default='')
         content = markdown.markdown(formatText(origin_content))
         if name == "":
             self.redirect("/post/%d" % int(pid), error=u"请填入名字")

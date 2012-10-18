@@ -54,6 +54,7 @@ a:hover {
 }
 
 #top .brand h1 {
+  color: #8b8b8b;
   display: inline;
 }
 
@@ -588,4 +589,9 @@ span.time {
 
 .open .dropdown-menu {
   display: block;
+}
+
+span.neces {
+  color: #ccc;
+  font-size: 12px;
 }

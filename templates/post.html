@@ -57,6 +57,55 @@
         $('#' + floor).addClass('isit');
         $.scrollTo('#' + floor,500);
         });
+    $('form :input').blur(function(){
+        if($(this).is('#reply_name')){
+          if(this.value == ''){
+            $('span.reply_name').css({"color":"#C01F2F"}).html("请输入正确的名字");
+          } else {
+            $('span.reply_name').css({"color":"#468847"}).html("√ 输入正确");
+          }
+        }
+        if($(this).is('#reply_email')){
+          if(this.value == '' || (this.value != "" && !/.+@.+\.[a-zA-Z]{2,4}$/.test(this.value))){
+            $('span.reply_email').css({"color":"#C01F2F"}).html("请输入正确的 E-Mail 地址");
+          } else {
+            $('span.reply_email').css({"color":"#468847"}).html("√ 输入正确");
+          }
+        }
+        }).keyup(function(){
+          $(this).triggerHandler('blur');
+        }).focus(function(){
+          var $editor = $('#editor-input');
+          $(this).triggerHandler('blur');
+        });
+    $('.btn').click(function(){
+        $('span.reply_name').css({"color":"#ccc"}).html("必填");
+        $('span.reply_email').css({"color":"#ccc"}).html("必填");
+        var $name = $('input#reply_name');
+        var $email = $('input#reply_email');
+        var $editor = $('#editor-input');
+        $editor.css({"border-color":"#DADADA"});
+        var error = 0;
+        if($name.val() == ''){
+          $('span.reply_name').css({"color":"#C01F2F"}).html("请输入正确的名字");
+          error = 1;
+        } else {
+          $('span.reply_name').css({"color":"#468847"}).html("√ 输入正确");
+        }
+        if($email.val() == '' || ($email.val() != "" && !/.+@.+\.[a-zA-Z]{2,4}$/.test($email.val()))){
+          $('span.reply_email').css({"color":"#C01F2F"}).html("请输入正确的 E-Mail 地址");
+          error = 1;
+        } else {
+          $('span.reply_email').css({"color":"#468847"}).html("√ 输入正确");
+        }
+        if($editor.val() == ''){
+          $editor.css({"border-color":"#C01F2F"});
+          error = 1;
+        }
+        if(error===1){
+        return false;
+        }
+        });
     })
 </script>
 {% end %}
@@ -116,10 +165,12 @@
       <p>
         <label for="reply_name">名字</label>
         <input type="text" id="reply_name" name="reply[name]" size="30" value="{{ replyer['name'] }}">
+        <span class="reply_name neces">必填</span>
       </p>
       <p>
         <label for="reply_email">邮箱</label>
         <input type="text" id="reply_email" name="reply[email]" size="30" value="{{ replyer['email'] }}">
+        <span class="reply_email neces">必填</span>
       </p>
       <p>
         <label for="reply_website">网址</label>
@@ -127,7 +178,7 @@
       </p>
     </div>
     <div class="control-group">
-      <textarea id="editor-input" name="reply[content]" rows="10" cols="65"></textarea>
+      <textarea id="editor-input" name="reply[content]" rows="10" cols="60"></textarea>
     </div>
     <div class="control-group">
       {{ xsrf_form_html() }}
