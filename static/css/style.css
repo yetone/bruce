@@ -54,8 +54,10 @@ a:hover {
 }
 
 #top .brand h1 {
+  position: relative;
   color: #8b8b8b;
   display: inline;
+  top: 4px;
 }
 
 #top .nav {
@@ -324,6 +326,11 @@ div.recentreply {
   margin-right: 30px;
 }
 
+span.submit {
+  position: relative;
+  top: 5px;
+  left: 5px;
+}
 .floor {
   margin-left: 5px;
 }

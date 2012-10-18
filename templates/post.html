@@ -178,11 +178,12 @@
       </p>
     </div>
     <div class="control-group">
-      <textarea id="editor-input" name="reply[content]" rows="10" cols="60"></textarea>
+      <textarea id="editor-input" name="reply[content]" rows="10" cols="60" onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
     </div>
     <div class="control-group">
       {{ xsrf_form_html() }}
       <button id="submit" class="btn" type="submit">提交</button>
+      <span class="submit gray little">Ctrl + Enter</span>
     </div>
   </form>
 </div>
