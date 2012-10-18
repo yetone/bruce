@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ escape(handler.settings["title"]) }}</title>
+  {% if len(posts) > 0 %}
+    <updated>{{ formatDate2(posts[0].created_date) }}</updated>
+  {% else %}
+    <updated>{{ formatDate2(updated_time) }}</updated>
+  {% end %}
+  <id>http://{{ request.host }}/</id>
+  <link rel="alternate" href="http://{{ request.host }}/" title="{{ escape(handler.settings["title"]) }}" type="text/html"/>
+  <link rel="self" href="{{ request.full_url() }}" title="{{ escape(handler.settings["title"]) }}" type="application/atom+xml"/>
+  <author><name>{{ escape(handler.settings["title"]) }}</name></author>
+  {% for post in posts %}
+    <entry>
+      <id>http://{{ request.host }}/post/{{ post.id }}</id>
+      <title type="text">{{ escape(post.title) }}</title>
+      <link href="http://{{ request.host }}/post/{{ post.id }}" rel="alternate" type="text/html"/>
+      <updated>{{ formatDate2(post.created_date) }}</updated>
+      <published>{{ formatDate2(post.created_date) }}</published>
+      <content type="xhtml" xml:base="http://{{ request.host }}/">
+        <div xmlns="http://www.w3.org/1999/xhtml">{{ post.content }}</div>
+      </content>
+    </entry>
+  {% end %}
+</feed>
