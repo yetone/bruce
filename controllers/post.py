@@ -84,8 +84,8 @@ class PostEditHandler(BaseHandler):
 
     def post(self, pid):
         self.checkAdmin()
-        title = self.get_argument("post[title]")
-        origin_content = self.get_argument("post[content]")
+        title = self.get_argument("post[title]", default='')
+        origin_content = self.get_argument("post[content]", default='')
         content = markdown.markdown(origin_content)
         if title != '' and origin_content != '':
             post = db.query(Post).get(pid)
