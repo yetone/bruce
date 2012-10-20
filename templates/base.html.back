@@ -37,7 +37,6 @@
     </div>
     <div id="main">
       <div class="wrapper">
-        <div id="container">
         <div id="content">
           {% block body %}{% end %}
         </div>
@@ -58,11 +57,9 @@
               </div>
             </div>
           </div>
-          {{ modules.RecentReplys(handler.settings['recent_replys']) }}
           {% block insidebar %}
           {% end %}
           {% end %}
-        </div>
         </div>
       </div>
     </div>

@@ -41,6 +41,7 @@ class Application(tornado.web.Application):
         settings = dict(
             template_path = os.path.join("templates"),
             static_path = os.path.join("static"),
+            ui_modules={"RecentReplys": post.RecentReplysModule},
             xsrf_cookies = True,
             cookie_secret = config.cookie_secret,
             autoescape = None,
@@ -53,6 +54,7 @@ class Application(tornado.web.Application):
             url = config.url,
             login_url = "/",
             paged = config.paged,
+            recent_replys = post.getRecentReplys()
         )
         tornado.web.Application.__init__(self, handlers, **settings)
 

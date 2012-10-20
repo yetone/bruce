@@ -15,6 +15,9 @@ import sqlalchemy as sa
 
 config = config.rec()
 
+def getRecentReplys():
+    return db.query(Reply).order_by(sa.desc(Reply.created_date)).limit(6)
+
 class HomeHandler(BaseHandler):
     def get(self, page = 1):
         page = int(page)
@@ -22,10 +25,9 @@ class HomeHandler(BaseHandler):
         page_count = (count + config.paged - 1) // config.paged
         posts = db.query(Post).order_by(sa.desc(Post.created_date)).offset((page - 1) *
                 config.paged).limit(config.paged)
-        recent_replys = db.query(Reply).order_by(sa.desc(Reply.created_date)).limit(6)
         self.render("home.html", posts=posts, getDay=getDay, getMonth=getMonth, \
                 getAvatar=getAvatar, replyContent=replyContent, formatDate=formatDate, formatDate2=formatDate2, showPost=showPost, page=page,
-                page_count=page_count, recent_replys=recent_replys)
+                page_count=page_count)
 
 class ArchiveHandler(BaseHandler):
     def get(self, page = 1):
@@ -54,7 +56,8 @@ class PostHandler(BaseHandler):
         if not post: raise tornado.web.HTTPError(404)
         replys = db.query(Reply).filter(Reply.pid == pid).all()
         self.render("post.html", post=post, replys=replys, \
-                formatDate=formatDate, formatDate2=formatDate2, getAvatar=getAvatar, replyer=replyer)
+                formatDate=formatDate, formatDate2=formatDate2,
+                getAvatar=getAvatar, replyer=replyer)
 
 class PostAddHandler(BaseHandler):
     def get(self):
@@ -105,3 +108,10 @@ class FeedHandler(BaseHandler):
         self.set_header("Content-Type", "application/atom+xml")
         self.render("feed.xml", posts=posts, formatDate2=formatDate2,
                 updated_time=updated_time, config=config)
+
+class RecentReplysModule(tornado.web.UIModule):
+    def render(self, recent_replys, getAvatar=getAvatar,
+            replyContent=replyContent):
+        return self.render_string("modules/recentreplys.html",
+                recent_replys=recent_replys, getAvatar=getAvatar,
+                replyContent=replyContent)

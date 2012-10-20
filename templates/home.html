@@ -1,25 +1,5 @@
 {% extends "base.html" %}
 
-{% block insidebar %}
-<div class="box recentreply">
-  <header>
-    Recent Replys
-  </header>
-  {% for r in recent_replys %}
-  <div class="item-list">
-    <div class="avatar">
-      <img src="{{ getAvatar(r.email, 24) }}">
-    </div>
-    <div class="rcontent">
-      <b><a class="name" href="{{ r.website }}">{{ r.name }}:</a></b>
-      <a href="/post/{{ r.pid }}">
-      {{ replyContent(r.origin_content)}}
-      </a>
-  </div>
-  </div>
-  {% end %}
-</div>
-{% end %}
 {% block body %}
 <div class="box">
   {% for post in posts %}

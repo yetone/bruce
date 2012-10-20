@@ -29,4 +29,4 @@ class ReplyAddHandler(BaseHandler):
             content=content, origin_content=origin_content, number=number))
         db.commit()
         self.replyerSet(name, email, website)
-        self.redirect("/post/%d" % (int(pid)))
+        self.redirect("/post/%d#%d" % (int(pid), int(number)))
