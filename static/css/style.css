@@ -360,8 +360,8 @@ span.submit {
   border-top: 1px solid #ddd;
   padding: 10px 25px 0 30px;
   margin-top: 10px;
-  font-size: 14px;
-  line-height: 150%;
+  font-size: 15px;
+  line-height: 180%;
 }
 
 
@@ -375,6 +375,23 @@ a.at:hover {
 
 a.at img {
   margin-right: 15px;
+}
+
+pre {
+  display: block;
+  padding: 8px;
+  margin: 0 0 15px;
+  line-height: 20px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+code, pre {
+  font-family: Monaco,Menlo,"Courier New",monospace;
+  font-size: 12px;
 }
 
 .date {

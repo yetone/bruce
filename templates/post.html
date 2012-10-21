@@ -80,7 +80,7 @@
         });
     $('.btn').click(function(){
         $('span.reply_name').css({"color":"#ccc"}).html("必填");
-        $('span.reply_email').css({"color":"#ccc"}).html("必填");
+        $('span.reply_email').css({"color":"#ccc"}).html("必填 不会公开");
         var $name = $('input#reply_name');
         var $email = $('input#reply_email');
         var $editor = $('#editor-input');
@@ -170,7 +170,7 @@
       <p>
         <label for="reply_email">邮箱</label>
         <input type="text" id="reply_email" name="reply[email]" size="30" value="{{ replyer['email'] }}">
-        <span class="reply_email neces">必填</span>
+        <span class="reply_email neces">必填 不会公开</span>
       </p>
       <p>
         <label for="reply_website">网址</label>
