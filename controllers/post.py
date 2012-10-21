@@ -5,9 +5,9 @@ import tornado.web
 
 import config
 from helpers import getAvatar, getDay, getMonth, formatDate, formatDate2, showPost, replyContent
+from extensions import md
 from .base import BaseHandler
 from database import db
-import markdown
 
 from models import Post, Reply
 
@@ -68,7 +68,7 @@ class PostAddHandler(BaseHandler):
         self.checkAdmin()
         title = self.get_argument("post[title]")
         origin_content = self.get_argument("post[content]")
-        content = markdown.markdown(origin_content)
+        content = md(origin_content)
         if title != '' and origin_content != '':
             db.add(Post(title=title, content=content,
                 origin_content=origin_content))
@@ -89,7 +89,7 @@ class PostEditHandler(BaseHandler):
         self.checkAdmin()
         title = self.get_argument("post[title]", default='')
         origin_content = self.get_argument("post[content]", default='')
-        content = markdown.markdown(origin_content)
+        content = md(origin_content)
         if title != '' and origin_content != '':
             post = db.query(Post).get(pid)
             post.title = title

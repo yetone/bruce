@@ -4,6 +4,7 @@
     <meta content="True" name="HandheldFriend">
     <title>{% block title %}{% end %}{{ escape(handler.settings['title'])}}</title>
     <link rel="stylesheet" type="text/css" media="screen" href="{{ static_url('css/style.css') }}" />
+    {% block style %}{% end %}
   </head>
   <body>
     <div id="top">
