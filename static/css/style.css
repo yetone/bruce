@@ -1,8 +1,10 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+
 body {
   margin: 0px;
   background-image: url(/static/img/bg.png);
   font-size: 13px;
-  font-family: 'Helvetica Neue Light',HelveticaNeue-Light,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-family: 'Ubuntu','Helvetica Neue Light',HelveticaNeue-Light,'Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 
 ul {
@@ -392,6 +394,7 @@ pre {
 code, pre {
   font-family: Monaco,Menlo,"Courier New",monospace;
   font-size: 12px;
+  margin: 10px;
 }
 
 .date {

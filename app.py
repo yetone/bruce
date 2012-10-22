@@ -30,6 +30,7 @@ class Application(tornado.web.Application):
             (r"/post/edit/(\d+)[/]*", post.PostEditHandler),
 
             (r"/reply/(\d+)/add[/]*", reply.ReplyAddHandler),
+            (r"/reply/(\d+)/edit/(\d+)[/]*", reply.ReplyEditHandler),
 
             (r"/rss[/]*", post.FeedHandler),
             (r"/feed[/]*", post.FeedHandler),
@@ -39,8 +40,8 @@ class Application(tornado.web.Application):
 
         ]
         settings = dict(
-            template_path = os.path.join("templates"),
-            static_path = os.path.join("static"),
+            template_path = os.path.join(os.path.dirname(__file__), "templates"),
+            static_path = os.path.join(os.path.dirname(__file__), "static"),
             ui_modules={"RecentReplys": post.RecentReplysModule},
             xsrf_cookies = True,
             cookie_secret = config.cookie_secret,
