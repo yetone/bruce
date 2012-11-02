@@ -67,7 +67,6 @@ $(function(){
       }).keyup(function(){
         $(this).triggerHandler('blur');
       }).focus(function(){
-        var $editor = $('#editor-input');
         $(this).triggerHandler('blur');
       });
   $('.btn').click(function(){
@@ -98,4 +97,20 @@ $(function(){
       return false;
       }
       });
+    var website = $('#reply_website');
+    var url = website.val();
+    if (url.indexOf("http://") != 0) {
+      var newurl = "http://" + url; 
+      website.val(newurl);
+    }
+    if (website.val() == "http://") {
+      website.css({"color":"#ddd"});
+    }
+    website.focus(function(){
+      website.css({"color":"#555"});
+    }).blur(function(){
+      if (website.val() == "http://") {
+        website.css({"color":"#ddd"});
+      }
+    });
   })

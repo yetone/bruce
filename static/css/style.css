@@ -42,7 +42,7 @@ a:hover {
   background-image: -moz-linear-gradient(center top, #333, #222);
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.75);
   min-height: 39px;
-  border-radius: 0 0 6px 6px;
+  border-radius: 0 0 3px 3px;
   width: 960px;
   margin-right: auto;
   margin-left: auto;
@@ -449,12 +449,16 @@ a.ribbon:hover .ribbon-piece {
   left: -9px;
   -webkit-transform: rotate(-25deg);
   -moz-transform: rotate(-25deg);
+  -o-transform: rotate(-25deg);
+  transform: rotate(-25deg);
 }
 
 .ribbon .tail .right {
   right: -9px;
   -webkit-transform: rotate(25deg);
   -moz-transform: rotate(25deg);
+  -o-transform: rotate(25deg);
+  transform: rotate(25deg);
 }
 
 .ribbon .tail .left, .ribbon .tail .right {
