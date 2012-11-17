@@ -1,5 +1,5 @@
-import tornado.httpserver
-import tornado.ioloop
+# coding: utf-8
+
 import tornado.web
 
 import config

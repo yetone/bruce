@@ -41,7 +41,7 @@ class Application(tornado.web.Application):
 
         ]
         settings = dict(
-            template_path = os.path.join(os.path.dirname(__file__), "templates"),
+            template_path = os.path.join(os.path.dirname(__file__), "views"),
             static_path = os.path.join(os.path.dirname(__file__), "static"),
             ui_modules={"RecentReplys": post.RecentReplysModule},
             xsrf_cookies = True,

@@ -62,12 +62,12 @@ class PostHandler(BaseHandler):
 class PostAddHandler(BaseHandler):
     def get(self):
         self.checkAdmin()
-        self.render("postadd.html")
+        self.render("postadd.html", title='', origin_content='')
 
     def post(self):
         self.checkAdmin()
-        title = self.get_argument("post[title]")
-        origin_content = self.get_argument("post[content]")
+        title = self.get_argument("post[title]", '')
+        origin_content = self.get_argument("post[content]", '')
         content = md(origin_content)
         if title != '' and origin_content != '':
             db.add(Post(title=title, content=content,
@@ -75,7 +75,8 @@ class PostAddHandler(BaseHandler):
             db.commit()
             self.redirect("/")
         else:
-            self.render("postadd.html", error=u"标题或内容不能为空。")
+            self.render("postadd.html", error=u"标题或内容不能为空。",
+                    title=title, origin_content=origin_content)
 
 class PostEditHandler(BaseHandler):
     def get(self, pid):
@@ -90,15 +91,16 @@ class PostEditHandler(BaseHandler):
         title = self.get_argument("post[title]", default='')
         origin_content = self.get_argument("post[content]", default='')
         content = md(origin_content)
+        post = db.query(Post).get(pid)
+        post.title = title
+        post.origin_content = origin_content
+        post.content = content
         if title != '' and origin_content != '':
-            post = db.query(Post).get(pid)
-            post.title = title
-            post.origin_content = origin_content
-            post.content = content
             db.commit()
             self.redirect("/post/%d" % (int(pid)))
         else:
-            self.render("postedit.html", error=u"标题或内容不能为空。")
+            self.render("postedit.html", error=u"标题或内容不能为空。",
+                    post=post)
 
 class FeedHandler(BaseHandler):
     def get(self):

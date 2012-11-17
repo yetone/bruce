@@ -18,7 +18,7 @@ class ReplyAddHandler(BaseHandler):
         email = self.get_argument("reply[email]", default='')
         website = self.get_argument("reply[website]", default='')
         origin_content = self.get_argument("reply[content]", default='')
-        content = md(formatText(origin_content))
+        content = formatText(md(formatText(origin_content)))
         if name == "":
             self.redirect("/post/%d" % int(pid), error=u"请填入名字")
         if email == "":
