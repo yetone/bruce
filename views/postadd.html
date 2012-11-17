@@ -8,11 +8,11 @@
     <div class="control-group">
       <p>
         <label for="post_title">标题</label>
-        <input type="text" id="post_title" name="post[title]" size="60" {% if title and title != '' %}value="{{ title }}"{% end %}>
+        <input type="text" id="post_title" name="post[title]" size="50" {% if title and title != '' %}value="{{ title }}"{% end %}>
       </p>
     </div>
     <div class="control-group">
-      <textarea id="editor-input" name="post[content]" rows="25" cols="65">{% if origin_content and origin_content != '' %}{{ origin_content }}{% end %}</textarea>
+      <textarea id="editor-input" name="post[content]" rows="26" cols="55">{% if origin_content and origin_content != '' %}{{ origin_content }}{% end %}</textarea>
     </div>
     <div class="control-group">
       {{ xsrf_form_html() }}

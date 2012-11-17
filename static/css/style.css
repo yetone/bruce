@@ -481,17 +481,6 @@ a.ribbon:hover .ribbon-piece {
   margin-left: 20px;
 }
 
-#new_post input {
-  width: 600px;
-}
-
-#new_post textarea {
-  width: 610px;
-}
-
-#new_reply textarea {
-  width: 560px;
-}
 
 input, textarea {
   color: #555;
