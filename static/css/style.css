@@ -658,3 +658,7 @@ span.neces {
   margin-bottom: 6px;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
 }
+
+.rcontent p {
+  display: inline;
+}
