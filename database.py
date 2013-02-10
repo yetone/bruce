@@ -17,7 +17,7 @@ db = Session()
 
 mBase = declarative_base()
 
-def create_db():
+def initialize_db():
     import models
     try:
         mBase.metadata.create_all(engine)
