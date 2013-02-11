@@ -62,10 +62,10 @@ class Application(tornado.web.Application):
 
 def main():
     initialize_db()
-    print("App started. Listenning on %d" % int(os.environ.get('PORT', 8888)))
     tornado.options.parse_command_line()
     tornado.httpserver.HTTPServer(Application(),
             xheaders=True).listen(options.port)
+    print("App started. Listenning on %d" % options.port)
     tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == '__main__':
