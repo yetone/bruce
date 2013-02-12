@@ -11,7 +11,7 @@ from tornado.options import define, options
 
 import config
 from controllers import post, user, reply
-from database import create_db
+from database import initialize_db
 from helpers import getAvatar
 
 config = config.rec()
@@ -61,11 +61,11 @@ class Application(tornado.web.Application):
         tornado.web.Application.__init__(self, handlers, **settings)
 
 def main():
-    create_db()
-    print("App started. Listenning on %d" % int(os.environ.get('PORT', 8888)))
+    initialize_db()
     tornado.options.parse_command_line()
     tornado.httpserver.HTTPServer(Application(),
             xheaders=True).listen(options.port)
+    print("App started. Listenning on %d" % options.port)
     tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == '__main__':
