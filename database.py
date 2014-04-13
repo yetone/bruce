@@ -23,7 +23,7 @@ def initialize_db():
         mBase.metadata.create_all(engine)
     except OperationalError, err:
         sys.stderr.write('OperationalError: %s\n' %  str(err))
-        print("目测是数据库没有权限或不存在，自己不会看OpertaionalError啊混蛋！")
+        print("目测是数据库没有权限或不存在，自己不会看 OpertaionalError 啊混蛋！")
         sys.exit(1)
     print("数据库部署完成！")
     return
