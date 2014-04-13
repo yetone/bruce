@@ -59,7 +59,7 @@ def format_date2(timestamp):
 
 def get_avatar(email, size=48):
     return \
-            'http://gravatar.com/avatar/%s?d=identicon&s=%d&d=http://feather.im/static/img/gravatar.png' \
+            'http://gravatar.com/avatar/%s?d=identicon&s=%d&d=' + config.url + 'static/img/gravatar.png' \
             % (md5(email.strip().lower().encode('utf-8')).hexdigest(), size)
 
 def show_post(content, pid=1):
