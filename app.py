@@ -41,22 +41,23 @@ class Application(tornado.web.Application):
 
         ]
         settings = dict(
-            template_path = os.path.join(os.path.dirname(__file__), "views"),
-            static_path = os.path.join(os.path.dirname(__file__), "static"),
-            ui_modules={"RecentReplys": post.RecentReplysModule},
-            xsrf_cookies = True,
-            cookie_secret = config.cookie_secret,
-            autoescape = None,
-            title = config.title,
-            desc = config.description,
-            name = config.name,
-            admin_username = config.admin_username,
+            template_path    = os.path.join(os.path.dirname(__file__), "views"),
+            static_path      = os.path.join(os.path.dirname(__file__), "static"),
+            ui_modules       = {"RecentReplys": post.RecentReplysModule},
+            xsrf_cookies     = True,
+            cookie_secret    = config.cookie_secret,
+            autoescape       = None,
+            title            = config.title,
+            desc             = config.description,
+            name             = config.name,
+            admin_username   = config.admin_username,
             admin_avatar_url = getAvatar(config.admin_email, 96),
-            admin_info = config.admin_info,
-            url = config.url,
-            login_url = "/",
-            paged = config.paged,
-            recent_replys = post.getRecentReplys()
+            admin_info       = config.admin_info,
+            url              = config.url,
+            login_url        = "/",
+            paged            = config.paged,
+            recent_replys    = post.getRecentReplys(),
+            debug            = True
         )
         tornado.web.Application.__init__(self, handlers, **settings)
 

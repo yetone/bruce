@@ -29,12 +29,12 @@ class ReplyAddHandler(BaseHandler):
         db.add(Reply(pid=int(pid), name=name, email=email, website=website,
             content=content, origin_content=origin_content, number=number))
         db.commit()
-        self.replyerSet(name, email, website)
+        self.set_replyer(name, email, website)
         self.redirect("/post/%d#%d" % (int(pid), int(number)))
 
 class ReplyEditHandler(BaseHandler):
     def get(self, pid, id):
-        self.checkAdmin()
+        self.check_admin()
         reply = db.query(Reply).get(id)
         if reply is None:
             raise tornado.web.HTTPError(404)
@@ -42,7 +42,7 @@ class ReplyEditHandler(BaseHandler):
         self.render("replyedit.html", reply=reply, post=post)
 
     def post(self, pid, id):
-        self.checkAdmin()
+        self.check_admin()
         name = self.get_argument("reply[name]", default='')
         email = self.get_argument("reply[email]", default='')
         website = self.get_argument("reply[website]", default='')
@@ -63,5 +63,5 @@ class ReplyEditHandler(BaseHandler):
         reply.origin_content = origin_content
         reply.content = content
         db.commit()
-        self.replyerSet(name, email, website)
+        self.set_replyer(name, email, website)
         self.redirect("/post/%d#%d" % (int(pid), int(reply.number)))

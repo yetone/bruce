@@ -9,7 +9,7 @@ config = config.rec()
 
 class LoginHandler(BaseHandler):
     def get(self):
-        if self.isAdmin():
+        if self.is_admin():
             self.redirect("/")
         else:
             self.render("login.html")
@@ -17,8 +17,8 @@ class LoginHandler(BaseHandler):
     def post(self):
         username = self.get_argument("username")
         password = self.get_argument("password")
-        if self.userAuth(username, password):
-            self.currentUserSet(username)
+        if self.auth_user(username, password):
+            self.set_current_user(username)
             self.redirect("/")
         else:
             self.redirect("/login")
