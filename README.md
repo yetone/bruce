@@ -30,6 +30,6 @@ python app.py              # default
 python app.py --port=8888  # run app on custom port
 ```
 
-other
+Other
 -------
 If your want to use nginx as a reverse proxy, Read [Tornado Documentation](http://www.tornadoweb.org/documentation/overview.html?highlight=nginx#running-tornado-in-production)
