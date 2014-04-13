@@ -3,6 +3,7 @@
 import time
 import sqlalchemy as sa
 from database import mBase
+import helpers
 
 class Reply(mBase):
     __tablename__ = 'reply'
@@ -42,3 +43,6 @@ class Reply(mBase):
 
     def __repr__(self):
         return '<Reply %d %s>' % (self.id, self.name)
+
+    def get_avatar(self, size=24):
+        return helpers.get_avatar(self.email, size)

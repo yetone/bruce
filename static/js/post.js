@@ -4,8 +4,8 @@ $(function(){
       var parent = $(this).parents('.infos').children('.info');
       var name = parent.children('.name').html();
       var floor = parent.children('.floor').html();
-      var replyContent = $('#editor-input');
-      var oldContent = replyContent.val();
+      var reply_content = $('#editor-input');
+      var oldContent = reply_content.val();
       var prefix = "#" + floor + "楼" + " " + "@" + name + " ";
       var newContent = '';
       if (oldContent.length > 0) {
@@ -15,8 +15,8 @@ $(function(){
       } else {
         newContent = prefix;
       }
-      replyContent.focus();
-      replyContent.val(newContent);
+      reply_content.focus();
+      reply_content.val(newContent);
     });
   $('ul.nav li.active').removeClass();
   $('a.toreply').mouseover(

@@ -2,7 +2,7 @@
 
 import config
 from .base import BaseHandler
-from helpers import formatText
+from helpers import format_text
 from extensions import md
 from database import db
 import tornado.web
@@ -18,7 +18,7 @@ class ReplyAddHandler(BaseHandler):
         email = self.get_argument("reply[email]", default='')
         website = self.get_argument("reply[website]", default='')
         origin_content = self.get_argument("reply[content]", default='')
-        content = formatText(md(formatText(origin_content)))
+        content = format_text(md(format_text(origin_content)))
         if name == "":
             self.redirect("/post/%d" % int(pid), error=u"请填入名字")
         if email == "":
@@ -47,7 +47,7 @@ class ReplyEditHandler(BaseHandler):
         email = self.get_argument("reply[email]", default='')
         website = self.get_argument("reply[website]", default='')
         origin_content = self.get_argument("reply[content]", default='')
-        content = md(formatText(origin_content))
+        content = md(format_text(origin_content))
         if name == "":
             self.redirect("/post/%d" % int(pid), error=u"请填入名字")
         if email == "":

@@ -15,7 +15,7 @@
   {% for post in posts %}
   <li class="archive">
   <article>
-    <a href="/post/{{ post.id }}">{{ post.title }}</a><span class="time">< {{ formatDate2(post.created_date) }} ></span>
+    <a href="/post/{{ post.id }}">{{ post.title }}</a><span class="time">< {{ format_date2(post.created_date) }} ></span>
   </article>
   </li>
   {% end %}

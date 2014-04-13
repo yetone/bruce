@@ -5,12 +5,12 @@
   {% for r in recent_replys %}
   <div class="item-list">
     <div class="avatar">
-      <img src="{{ getAvatar(r.email, 24) }}">
+      <img src="{{ r.get_avatar(24) }}">
     </div>
     <div class="rcontent">
       <b><a class="name" href="{{ r.website }}">{{ r.name }}:</a></b>
-      <a href="/post/{{ r.pid }}#{{ r.number }}">
-      {{ replyContent(r.content) }}
+      <a class="summary" href="/post/{{ r.pid }}#{{ r.number }}">
+        {{ r.content }}
       </a>
   </div>
   </div>

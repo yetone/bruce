@@ -23,7 +23,7 @@
   </h1>
   {% end %}
   <div class="info">
-    {{ formatDate2(post.created_date) }}
+    {{ format_date2(post.created_date) }}
   </div>
   <div class="post_content">
     <div class="content">
@@ -38,14 +38,14 @@
   {% for reply in replys %}
   <div id="{{ reply.number }}" class="item-list">
     <div class="avatar">
-      <a href=""><img src="{{ getAvatar(reply.email) }}"></a>
+      <a href=""><img src="{{ get_avatar(reply.email) }}"></a>
     </div>
     <div class="infos">
       <div class="info">
         <a class="name dark" href="{{ reply.website }}">{{ reply.name }}</a>
         <span class="floor gray little">{{ reply.number }}</span>
         <span class="gray little"> 楼，</span>
-        <span class="gray little">{{ formatDate(reply.created_date) }}</span>
+        <span class="gray little">{{ format_date(reply.created_date) }}</span>
       </div>
       <div class="reply_icon">
         {% if current_user %}

@@ -12,7 +12,7 @@ from tornado.options import define, options
 import config
 from controllers import post, user, reply
 from database import initialize_db
-from helpers import getAvatar
+from helpers import get_avatar
 
 config = config.rec()
 define("port", default=8888, help="run on the given port", type=int)
@@ -51,7 +51,7 @@ class Application(tornado.web.Application):
             desc             = config.description,
             name             = config.name,
             admin_username   = config.admin_username,
-            admin_avatar_url = getAvatar(config.admin_email, 96),
+            admin_avatar_url = get_avatar(config.admin_email, 96),
             admin_info       = config.admin_info,
             url              = config.url,
             login_url        = "/",

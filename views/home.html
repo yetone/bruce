@@ -6,10 +6,10 @@
   <div class="cell article">
     <a class="ribbon date">
       <div class="top ribbon-piece">
-        {{ getMonth(post.created_date) }}
+        {{ get_month(post.created_date) }}
       </div>
       <div class="bottom ribbon-piece">
-        {{ getDay(post.created_date) }}
+        {{ get_day(post.created_date) }}
       </div>
       <div class="tail">
         <div class="left ribbon-piece">
@@ -22,10 +22,10 @@
       <a href="/post/{{ post.id }}">{{ escape(post.title) }}</a>
     </h1>
     <div class="info">
-      {{ formatDate(post.created_date) }}
+      {{ format_date(post.created_date) }}
     </div>
     <div class="show">
-      {{ showPost(post.content, post.id) }}
+      {{ show_post(post.content, post.id) }}
     </div>
   </div>
   {% end %}

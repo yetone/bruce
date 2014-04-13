@@ -4,7 +4,7 @@ import time
 import tornado.web
 
 import config
-from helpers import getAvatar, getDay, getMonth, formatDate, formatDate2, showPost, replyContent
+from helpers import get_avatar, get_day, get_month, format_date, format_date2, show_post, reply_content
 from extensions import md
 from .base import BaseHandler
 from database import db
@@ -28,13 +28,13 @@ class HomeHandler(BaseHandler):
                               .limit(config.paged)
         self.render("home.html",
                 posts        = posts,
-                getDay       = getDay,
-                getMonth     = getMonth,
-                getAvatar    = getAvatar,
-                replyContent = replyContent,
-                formatDate   = formatDate,
-                formatDate2  = formatDate2,
-                showPost     = showPost,
+                get_day       = get_day,
+                get_month     = get_month,
+                get_avatar    = get_avatar,
+                reply_content = reply_content,
+                format_date   = format_date,
+                format_date2  = format_date2,
+                show_post     = show_post,
                 page         = page,
                 page_count   = page_count)
 
@@ -48,7 +48,7 @@ class ArchiveHandler(BaseHandler):
                               .limit(config.archive_paged)
         self.render("archive.html",
                 posts       = posts,
-                formatDate2 = formatDate2,
+                format_date2 = format_date2,
                 page        = page,
                 page_count  = page_count)
 
@@ -71,9 +71,9 @@ class PostHandler(BaseHandler):
         self.render("post.html",
                 post        = post,
                 replys      = replys,
-                formatDate  = formatDate,
-                formatDate2 = formatDate2,
-                getAvatar   = getAvatar,
+                format_date  = format_date,
+                format_date2 = format_date2,
+                get_avatar   = get_avatar,
                 replyer     = replyer)
 
 class PostAddHandler(BaseHandler):
@@ -130,14 +130,14 @@ class FeedHandler(BaseHandler):
         self.set_header("Content-Type", "application/atom+xml")
         self.render("feed.xml",
                 posts        = posts,
-                formatDate2  = formatDate2,
+                format_date2  = format_date2,
                 updated_time = updated_time,
                 config       = config)
 
 class RecentReplysModule(tornado.web.UIModule):
-    def render(self, recent_replys, getAvatar=getAvatar,
-            replyContent=replyContent):
+    def render(self, recent_replys, get_avatar=get_avatar,
+            reply_content=reply_content):
         return self.render_string("modules/recentreplys.html",
                 recent_replys = recent_replys,
-                getAvatar     = getAvatar,
-                replyContent  = replyContent)
+                get_avatar     = get_avatar,
+                reply_content  = reply_content)
