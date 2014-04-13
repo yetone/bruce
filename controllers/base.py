@@ -48,6 +48,3 @@ class BaseHandler(tornado.web.RequestHandler):
     def check_admin(self):
         if not self.is_admin():
             raise tornado.web.HTTPError(404)
-
-    def get_current_user(self):
-        return self.get_current_user()
