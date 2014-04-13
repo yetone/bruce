@@ -23,8 +23,8 @@ class HomeHandler(BaseHandler):
         page = int(page)
         count = db.query(Post).count();
         page_count = (count + config.paged - 1) // config.paged
-        posts = db.query(Post).order_by(sa.desc(Post.created_date))
-                              .offset((page - 1) * config.paged)
+        posts = db.query(Post).order_by(sa.desc(Post.created_date))\
+                              .offset((page - 1) * config.paged)\
                               .limit(config.paged)
         self.render("home.html",
                 posts        = posts,
@@ -43,8 +43,8 @@ class ArchiveHandler(BaseHandler):
         page = int(page)
         count = db.query(Post).count()
         page_count = (count + config.archive_paged - 1) // config.archive_paged
-        posts = db.query(Post).order_by(sa.desc(Post.created_date))
-                              .offset((page - 1) * config.archive_paged)
+        posts = db.query(Post).order_by(sa.desc(Post.created_date))\
+                              .offset((page - 1) * config.archive_paged)\
                               .limit(config.archive_paged)
         self.render("archive.html",
                 posts       = posts,
