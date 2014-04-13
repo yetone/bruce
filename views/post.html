@@ -36,7 +36,7 @@
     <span class="gray little">共收到 <b>{{ len(replys) }}</b> 条回复</span>
   </div>
   {% for reply in replys %}
-  <div id="{{ reply.number }}" class="item-list">
+  <div id="{{ reply.number }}" class="item">
     <div class="avatar">
       <a href=""><img src="{{ get_avatar(reply.email) }}"></a>
     </div>

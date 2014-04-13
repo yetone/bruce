@@ -105,19 +105,17 @@ ul.nav {
 #content {
   min-height: 620px;
   float: left;
-  width: 73%;
-  padding-right: 4px;
+  width: 700px;
   border-right: 2px solid #eee;
 }
 
 #sidebar {
-  float: right;
-  width: 26%;
+  float: left;
+  width: 258px;
 }
 
 #sidebar .box {
   margin-bottom: 25px;
-  margin-right: 4px;
 }
 
 .show {
@@ -214,11 +212,11 @@ h1.title {
   text-decoration: none;
 }
 
-#reply.box {
-  padding: 15px 0 15px 4px;
+#reply {
+  padding: 15px 0;
 }
 
-.item-list {
+.item {
   border-top: 1px dashed #ddd;
   padding: 10px 0;
 }
@@ -296,13 +294,13 @@ a.name:hover {
 div.recentreply {
   padding-bottom: 10px;
 }
-.recentreply .item-list {
+.recentreply .item {
   min-height: 24px;
   border-color: #f4f4f4;
   padding-right: 10px;
 }
 
-.recentreply div.item-list:nth-child(2) {
+.recentreply .item:nth-child(2) {
   border: 0;
 }
 
@@ -315,6 +313,8 @@ div.recentreply {
 }
 .recentreply .rcontent {
   margin-left: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #reply .infos {
@@ -334,6 +334,7 @@ div.recentreply {
 .reply_content {
   margin-left: 78px;
   margin-right: 30px;
+  word-break: break-all;
 }
 
 span.submit {
@@ -350,7 +351,7 @@ span.submit {
 }
 
 #post {
-  padding: 15px 0 15px 4px;
+  padding: 15px 0;
   border-bottom: 3px dashed #eee;
 }
 
